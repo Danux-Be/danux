@@ -1,3 +1,4 @@
+<<<<<<< copilot/vscode-mlqm5qvk-vf5h
 # Wondershaper QuickToggle v1.1.0 — Release Notes
 
 ## Overview
@@ -24,6 +25,8 @@ Wondershaper QuickToggle v1.1 adds multi-language support and preset management 
 
 ---
 
+=======
+>>>>>>> main
 # Wondershaper QuickToggle v1.0.0 — Release Notes
 
 ## Overview
