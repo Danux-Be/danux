@@ -263,6 +263,7 @@ class QuickToggleApp:
             AppIndicator.IndicatorCategory.APPLICATION_STATUS,
         )
         self.indicator.set_status(AppIndicator.IndicatorStatus.ACTIVE)
+        self.indicator.set_title(APP_NAME)
         self.settings_window: Optional[SettingsWindow] = None
         self.menu = Gtk.Menu()
         self.sync_state_from_helper()

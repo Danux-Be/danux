@@ -8,7 +8,7 @@ Rules-Requires-Root: no
 
 Package: wondershaper-quicktoggle
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}, python3-gi, gir1.2-gtk-3.0, gir1.2-ayatanaappindicator3-0.1, gir1.2-notify-0.7, iproute2, policykit-1
+Depends: ${misc:Depends}, ${python3:Depends}, python3-gi, gir1.2-gtk-3.0, gir1.2-ayatanaappindicator3-0.1, gir1.2-notify-0.7, python3-setproctitle, iproute2, policykit-1
 Recommends: wondershaper
 Description: Tray toggle for bandwidth shaping with polkit helper
  Wondershaper QuickToggle provides a tray icon to quickly enable or disable
