@@ -198,13 +198,24 @@ class QuickToggleApp:
 
         self.indicator = AppIndicator.Indicator.new(
             APP_ID,
-            "wondershaper-quicktoggle-symbolic",
+            "wondershaper-quicktoggle",
             AppIndicator.IndicatorCategory.APPLICATION_STATUS,
         )
         self.indicator.set_status(AppIndicator.IndicatorStatus.ACTIVE)
         self.settings_window: Optional[SettingsWindow] = None
         self.menu = Gtk.Menu()
+        self.sync_state_from_helper()
         self.rebuild_menu()
+
+    def sync_state_from_helper(self) -> None:
+        iface = self.config.get("iface") or self.backend.detect_iface()
+        if not iface:
+            self.config["enabled"] = False
+            return
+        self.config["iface"] = iface
+        result = self.backend.check_status(iface)
+        self.config["enabled"] = bool(result.ok and result.message == "enabled")
+        self.save_config()
 
     def t(self, key: str, **kwargs: object) -> str:
         return self.i18n.t(key, **kwargs)

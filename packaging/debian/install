@@ -1,4 +1,5 @@
-src/main.py usr/bin/wondershaper-quicktoggle
+data/bin/wondershaper-quicktoggle usr/bin/
+src/main.py usr/lib/wondershaper-quicktoggle/
 src/app.py usr/lib/wondershaper-quicktoggle/
 src/backend.py usr/lib/wondershaper-quicktoggle/
 src/config.py usr/lib/wondershaper-quicktoggle/
@@ -7,6 +8,10 @@ helper/wsqt_helper.py usr/lib/wondershaper-quicktoggle/
 i18n/en.json usr/share/wondershaper-quicktoggle/i18n/
 data/icons/hicolor/scalable/apps/wondershaper-quicktoggle.svg usr/share/icons/hicolor/scalable/apps/
 data/icons/hicolor/scalable/status/wondershaper-quicktoggle-symbolic.svg usr/share/icons/hicolor/scalable/status/
+data/icons/hicolor/16x16/apps/wondershaper-quicktoggle.svg usr/share/icons/hicolor/16x16/apps/
+data/icons/hicolor/24x24/apps/wondershaper-quicktoggle.svg usr/share/icons/hicolor/24x24/apps/
+data/icons/hicolor/32x32/apps/wondershaper-quicktoggle.svg usr/share/icons/hicolor/32x32/apps/
+data/icons/hicolor/48x48/apps/wondershaper-quicktoggle.svg usr/share/icons/hicolor/48x48/apps/
 data/applications/wondershaper-quicktoggle.desktop usr/share/applications/
 data/autostart/wondershaper-quicktoggle.desktop usr/share/wondershaper-quicktoggle/
 data/polkit/io.github.wondershaper.quicktoggle.policy usr/share/polkit-1/actions/
