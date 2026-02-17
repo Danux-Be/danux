@@ -1,3 +1,8 @@
+
+<img width="430" height="394" alt="Capture d’écran du 2026-02-17 12-05-34" src="https://github.com/user-attachments/assets/620d1099-ab67-4049-bf1a-3f8a9af162c6" />
+
+<img width="408" height="262" alt="Capture d’écran du 2026-02-17 12-06-21" src="https://github.com/user-attachments/assets/cbd2e9fc-a489-4751-aa19-f01e6a1ad39a" />
+
 # Wondershaper QuickToggle (MVP)
 
 Wondershaper QuickToggle is a Linux desktop tray app that enables/disables traffic shaping presets quickly, without running the GUI as root.
