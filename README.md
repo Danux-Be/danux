@@ -3,7 +3,12 @@
 
 <img width="408" height="262" alt="Capture d’écran du 2026-02-17 12-06-21" src="https://github.com/user-attachments/assets/cbd2e9fc-a489-4751-aa19-f01e6a1ad39a" />
 
-# Wondershaper QuickToggle (MVP)
+# Wondershaper QuickToggle
+
+[![Release](https://img.shields.io/github/v/release/Danux-Be/Wondershaper-GUI?style=flat-square)](https://github.com/Danux-Be/Wondershaper-GUI/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/Danux-Be/Wondershaper-GUI/total?style=flat-square)](https://github.com/Danux-Be/Wondershaper-GUI/releases)
+[![License](https://img.shields.io/github/license/Danux-Be/Wondershaper-GUI?style=flat-square)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.12%2B-blue?style=flat-square)](https://www.python.org)
 
 Wondershaper QuickToggle is a Linux desktop tray app that enables/disables traffic shaping presets quickly, without running the GUI as root.
 
@@ -49,6 +54,20 @@ This MVP uses **Python 3 + PyGObject (GTK3) + Ayatana AppIndicator + libnotify**
 ## GNOME tray note
 GNOME Shell usually needs the extension **AppIndicator/KStatusNotifierItem Support** for tray icons.
 
+## Quick Install (Recommended)
+
+Download and install the latest `.deb` package from [GitHub Releases](https://github.com/Danux-Be/Wondershaper-GUI/releases/latest):
+
+```bash
+# Download the latest release
+wget https://github.com/Danux-Be/Wondershaper-GUI/releases/download/v1.1.0/wondershaper-quicktoggle_1.1.0-1_all.deb
+
+# Install
+sudo apt install ./wondershaper-quicktoggle_1.1.0-1_all.deb
+```
+
+Or visit the [Releases page](https://github.com/Danux-Be/Wondershaper-GUI/releases) to download manually.
+
 ## Install dependencies (Ubuntu / Linux Mint)
 ```bash
 sudo apt update
@@ -70,7 +89,7 @@ sudo install -m 0755 helper/wsqt_helper.py /usr/lib/wondershaper-quicktoggle/wsq
 sudo install -m 0644 data/polkit/io.github.wondershaper.quicktoggle.policy /usr/share/polkit-1/actions/
 ```
 
-## Install from .deb
+## Build from source (.deb)
 From repo root:
 ```bash
 cp -r packaging/debian .
