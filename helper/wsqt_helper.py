@@ -12,6 +12,7 @@ from typing import List
 IFACE_RE = re.compile(r"^[a-zA-Z0-9_.:-]{1,32}$")
 MIN_MBPS = 1
 MAX_MBPS = 10000
+KBPS_PER_MBPS = 1000
 
 
 def parse_args() -> argparse.Namespace:
@@ -48,7 +49,9 @@ def run_command(cmd: List[str]) -> subprocess.CompletedProcess[str]:
 def apply_wondershaper(iface: str, down: int, up: int) -> bool:
     if shutil.which("wondershaper") is None:
         return False
-    result = run_command(["wondershaper", "-a", iface, "-d", str(down), "-u", str(up)])
+    down_kbps = down * KBPS_PER_MBPS
+    up_kbps = up * KBPS_PER_MBPS
+    result = run_command(["wondershaper", "-a", iface, "-d", str(down_kbps), "-u", str(up_kbps)])
     if result.returncode != 0:
         raise RuntimeError(result.stderr.strip() or "wondershaper apply failed")
     return True
@@ -71,8 +74,8 @@ def clear_wondershaper(iface: str) -> bool:
 
 
 def apply_tc(iface: str, down: int, up: int) -> None:
-    down_kbit = down * 1000
-    up_kbit = up * 1000
+    down_kbit = down * KBPS_PER_MBPS
+    up_kbit = up * KBPS_PER_MBPS
     run_command(["tc", "qdisc", "del", "dev", iface, "root"])
     run_command(["tc", "qdisc", "del", "dev", iface, "ingress"])
 

@@ -57,17 +57,7 @@ class ShaperBackend:
 
     def check_status(self, iface: str) -> BackendResult:
         self._validate_iface(iface)
-        tc_ok = shutil.which("tc") is not None
-        if not tc_ok:
-            return BackendResult(ok=False, message="tc_not_found")
-        try:
-            output = subprocess.check_output(["tc", "qdisc", "show", "dev", iface], text=True)
-        except subprocess.CalledProcessError as exc:
-            return BackendResult(ok=False, message="iface_not_found", details={"stderr": exc.stderr})
-        except FileNotFoundError:
-            return BackendResult(ok=False, message="tc_not_found")
-        enabled = ("tbf" in output) or ("htb" in output)
-        return BackendResult(ok=True, message="enabled" if enabled else "disabled", details={"raw": output.strip()})
+        return self._run_helper(["status", "--iface", iface])
 
     def _run_helper(self, args: List[str]) -> BackendResult:
         cmd = ["pkexec", str(self.helper_path), *args]

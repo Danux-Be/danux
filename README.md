@@ -35,8 +35,9 @@ This MVP uses **Python 3 + PyGObject (GTK3) + Ayatana AppIndicator + libnotify**
 - Inputs are validated before helper execution:
   - interface allow-list regex
   - bandwidth range clamp (`1..10000 Mbps`)
+- UI stores rates in **Mbps**; helper converts to **Kbps** (`mbps * 1000`) before invoking `wondershaper`/`tc`.
 - Helper uses argument arrays (`subprocess.run([...])`) and never `shell=True`.
-- Polkit policy (`data/polkit/io.github.wondershaper.quicktoggle.policy`) scopes authorization to the helper path.
+- Polkit policy (`data/polkit/io.github.wondershaper.quicktoggle.policy`) uses action id `io.github.wondershaper.quicktoggle` and scopes authorization to the helper path.
 
 ## GNOME tray note
 GNOME Shell usually needs the extension **AppIndicator/KStatusNotifierItem Support** for tray icons.
@@ -62,12 +63,24 @@ sudo install -m 0755 helper/wsqt_helper.py /usr/lib/wondershaper-quicktoggle/wsq
 sudo install -m 0644 data/polkit/io.github.wondershaper.quicktoggle.policy /usr/share/polkit-1/actions/
 ```
 
-## Build minimal Debian package scaffold
+## Install from .deb
 From repo root:
 ```bash
 cp -r packaging/debian .
 dpkg-buildpackage -us -uc
+cd ..
+sudo apt install ./wondershaper-quicktoggle_*_all.deb
 ```
+
+Installed paths:
+- `/usr/bin/wondershaper-quicktoggle` (launcher shell script -> `python3 /usr/lib/wondershaper-quicktoggle/main.py`)
+- `/usr/lib/wondershaper-quicktoggle/` (application + helper code)
+- `/usr/share/polkit-1/actions/io.github.wondershaper.quicktoggle.policy`
+- `/usr/share/applications/wondershaper-quicktoggle.desktop`
+- `/usr/share/icons/hicolor/` (scalable + common app icon sizes)
+
+For local/manual policy install, keep helper path aligned with policy annotation:
+`/usr/lib/wondershaper-quicktoggle/wsqt_helper.py`.
 
 ## Troubleshooting
 - **No tray icon on GNOME**: install/enable AppIndicator/KStatusNotifierItem extension.
